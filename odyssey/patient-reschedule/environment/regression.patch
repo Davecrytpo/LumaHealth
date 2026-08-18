@@ -1,0 +1,71 @@
+diff --git a/server/routes/patient.ts b/server/routes/patient.ts
+index 8be17ae..7984054 100644
+--- a/server/routes/patient.ts
++++ b/server/routes/patient.ts
+@@ -191,10 +191,34 @@ patientRouter.patch('/appointments/:id', (req: AuthedRequest, res) => {
+       res.status(409).json({ message: 'That time is no longer available.' })
+       return
+     }
+-    apt.startsAt = open.startsAt
+-    apt.endsAt = open.endsAt
+-    apt.status = 'confirmed'
+-    writeAudit(req.userId!, 'rescheduled an appointment')
++    const doctor = getUser(apt.doctorId)
++    const appointment = {
++      id: uid('apt'),
++      patientId: req.userId!,
++      doctorId: apt.doctorId,
++      startsAt: open.startsAt,
++      endsAt: open.endsAt,
++      type: parsed.data.type ?? apt.type,
++      reason: (parsed.data.reason ?? apt.reason).trim(),
++      status: 'confirmed' as const,
++      createdAt: new Date().toISOString(),
++    }
++    db.appointments.push(appointment)
++    writeAudit(req.userId!, `booked an appointment with Dr. ${doctor?.lastName ?? ''}`)
++    notify(
++      req.userId!,
++      'appointment',
++      'Appointment confirmed',
++      `Your visit with Dr. ${doctor?.lastName} is on the calendar.`,
++    )
++    notify(
++      apt.doctorId,
++      'appointment',
++      'New appointment',
++      `${getUser(req.userId!)?.firstName} ${getUser(req.userId!)?.lastName} booked a visit.`,
++    )
++    res.json(toAppointmentView(appointment.id))
++    return
+   }
+   res.json(toAppointmentView(apt.id))
+ })
+diff --git a/src/pages/patient/BookingFlow.tsx b/src/pages/patient/BookingFlow.tsx
+index 6e0ad40..84029af 100644
+--- a/src/pages/patient/BookingFlow.tsx
++++ b/src/pages/patient/BookingFlow.tsx
+@@ -70,16 +70,14 @@ export function BookingFlow() {
+ 
+   const book = useMutation({
+     mutationFn: () =>
+-      rescheduleId
+-        ? json.patch<AppointmentView>(`/api/patient/appointments/${rescheduleId}`, { startsAt, type, reason })
+-        : json.post<AppointmentView>('/api/patient/appointments', {
+-            doctorId,
+-            startsAt,
+-            type,
+-            reason,
+-          }),
++      json.post<AppointmentView>('/api/patient/appointments', {
++        doctorId,
++        startsAt,
++        type,
++        reason,
++      }),
+     onSuccess: (apt) => {
+-      toast.push(rescheduleId ? 'Appointment rescheduled.' : 'Appointment confirmed.')
++      toast.push('Appointment confirmed.')
+       navigate(`/patient/appointments/${apt.id}/confirmed`, { state: { appointment: apt } })
+     },
+     onError: (err) => {
