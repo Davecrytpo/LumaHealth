@@ -1,0 +1,309 @@
+{
+  "generatedAt": "2026-08-18T15:22:55.031Z",
+  "base": "http://localhost:5173",
+  "counts": {
+    "critical": 0,
+    "high": 2,
+    "medium": 2,
+    "low": 0,
+    "total": 4
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "title": "Patient week strip overlaps bottom nav at 375px",
+      "route": "/patient",
+      "component": "PatientOverview/AppShell",
+      "steps": [
+        "Open /patient at 375px without scrolling"
+      ],
+      "expected": "Week fully above nav or scroll-safe padding",
+      "actual": "overlap",
+      "fix": "Increase main padding-bottom / move week"
+    },
+    {
+      "severity": "high",
+      "title": "Public header has no mobile navigation at 375px",
+      "route": "/",
+      "component": "PublicHeader",
+      "steps": [
+        "Resize landing to 375px"
+      ],
+      "expected": "Hamburger or reachable section links",
+      "actual": "Nav hidden, no menu",
+      "fix": "Add a mobile menu for For Patients / Clinicians / How it works / Security"
+    },
+    {
+      "severity": "medium",
+      "title": "Patient week strip overlaps bottom nav at 390px",
+      "route": "/patient",
+      "component": "PatientOverview/AppShell",
+      "steps": [
+        "Open /patient at 390px without scrolling"
+      ],
+      "expected": "Week fully above nav or scroll-safe padding",
+      "actual": "overlap",
+      "fix": "Increase main padding-bottom / move week"
+    },
+    {
+      "severity": "high",
+      "title": "Public header has no mobile navigation at 390px",
+      "route": "/",
+      "component": "PublicHeader",
+      "steps": [
+        "Resize landing to 390px"
+      ],
+      "expected": "Hamburger or reachable section links",
+      "actual": "Nav hidden, no menu",
+      "fix": "Add a mobile menu for For Patients / Clinicians / How it works / Security"
+    }
+  ],
+  "visited": [
+    {
+      "url": "http://localhost:5173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/#patients",
+      "status": 0
+    },
+    {
+      "url": "http://localhost:5173/#clinicians",
+      "status": 0
+    },
+    {
+      "url": "http://localhost:5173/#how-it-works",
+      "status": 0
+    },
+    {
+      "url": "http://localhost:5173/#security",
+      "status": 0
+    },
+    {
+      "url": "http://localhost:5173/sign-in",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/sign-up",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/forgot-password",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/this-route-does-not-exist",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/unauthorized",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/sign-in",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/sign-in",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/unauthorized",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/unauthorized",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/patient",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/patient/appointments",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/patient/appointments/apt_s13455cv2fxt",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/patient/find-care",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/patient/find-care/user_amara",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/patient/prescriptions",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/patient/prescriptions/rx_metformin",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/patient/notifications",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/patient/profile",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/patient/settings",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/sign-in",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/unauthorized",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/doctor",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/doctor/schedule",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/doctor/appointments/apt_amara_early",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/doctor/patients",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/doctor/prescriptions",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/doctor/prescriptions/new",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/doctor/profile",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/doctor/availability",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/doctor/notifications",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/sign-in",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/admin/users",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/admin/doctors",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/admin/appointments",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/admin/audit-log",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/admin/settings",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/unauthorized",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/sign-in",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/patient",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/patient",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/patient",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/patient",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/patient",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/sign-in",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/doctor",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/sign-in",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/admin",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/sign-in",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/patient",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/forgot-password",
+      "status": 304
+    }
+  ],
+  "consoleErrors": [
+    {
+      "url": "http://localhost:5173/sign-in",
+      "message": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    }
+  ]
+}

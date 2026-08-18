@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --lh-canvas: #f2f0e9;
+  --lh-surface: #faf9f5;
+  --lh-ink: #27352f;
+  --lh-muted: #66736c;
+  --lh-terracotta: #d46b4c;
+  --lh-terracotta-soft: #e7b9a7;
+  --lh-sage: #829582;
+  --lh-sage-soft: #dde4da;
+  --lh-honey: #d6b36a;
+  --lh-dark: #202724;
+  --lh-line: #d9d7ce;
+  --lh-focus: #d46b4c;
+  --lh-btn: #202724;
+  --lh-btn-fg: #f2f0e9;
+}
+
+[data-theme='dark'] {
+  --lh-canvas: #1e2421;
+  --lh-surface: #252c28;
+  --lh-ink: #f2f0e9;
+  --lh-muted: #aab3ac;
+  --lh-terracotta: #d98265;
+  --lh-terracotta-soft: #6a4338;
+  --lh-sage: #9aaf9a;
+  --lh-sage-soft: #334038;
+  --lh-honey: #d6b36a;
+  --lh-dark: #141816;
+  --lh-line: #3a423d;
+  --lh-focus: #d98265;
+  --lh-btn: #f2f0e9;
+  --lh-btn-fg: #1e2421;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  background: var(--lh-canvas);
+  color: var(--lh-ink);
+  font-family: Manrope, system-ui, sans-serif;
+  font-feature-settings: 'ss01' on, 'cv11' on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--lh-terracotta-soft);
+  color: var(--lh-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--lh-focus);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+@layer components {
+  .lh-page {
+    @apply mx-auto w-full max-w-page px-4 py-6 md:px-8 md:py-8 lg:px-10 lg:py-10;
+  }
+
+  .lh-kicker {
+    @apply text-[11px] font-medium uppercase tracking-[0.18em] text-muted;
+  }
+
+  .lh-rule {
+    @apply border-t border-line;
+  }
+
+  .lh-link {
+    @apply text-ink underline-offset-4 transition hover:text-terracotta;
+  }
+
+  .lh-display {
+    @apply font-display text-[2.125rem] leading-[1.12] md:text-5xl;
+  }
+
+  .lh-display-lg {
+    @apply font-display text-[2.5rem] leading-[1.08] md:text-6xl;
+  }
+
+  .lh-actions {
+    @apply flex flex-col gap-3 md:flex-row md:flex-wrap;
+  }
+
+  .lh-actions > a,
+  .lh-actions > button {
+    @apply w-full md:w-auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
